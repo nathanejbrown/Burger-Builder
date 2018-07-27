@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classes from './Layout.css';
 import Toolbar from '../Navigation/Toolbar/Toolbar';
+import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 
-const layout = (props) => (
-  <React.Fragment>
-    <Toolbar />
-    <main className={classes.Content}>
-      {props.children}
-    </main>
-  </React.Fragment>
-);
+class Layout extends Component {
+  state = {
+    showSideDrawer: false
+  }
 
-export default layout;
+  sideDrawerToggleHandler = () => {
+    //best way to set state when new state is dependent on old state. 
+    this.setState((prevState) => {
+      return {showSideDrawer: !prevState.showSideDrawer}
+    })
+
+  }
+
+  render () {
+    return (
+      <React.Fragment>
+        <Toolbar toggle={this.sideDrawerToggleHandler}/>
+        <SideDrawer toggle={this.sideDrawerToggleHandler} open={this.state.showSideDrawer}/>
+        <main className={classes.Content}>
+          {this.props.children}
+        </main>
+      </React.Fragment>
+    )
+  }
+}
+
+export default Layout;
