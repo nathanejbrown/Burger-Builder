@@ -1,5 +1,5 @@
 {
-  "homepage": "https://nathanejbrown.github.io/React-Burger-Builder/",
+  "homepage": "https://nathanejbrown.github.io/Burger-Builder/",
   "name": "burger-builder-app",
   "version": "0.1.0",
   "private": true,
@@ -29,6 +29,7 @@
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
+    "npm": "^6.2.0",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
