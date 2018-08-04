@@ -3,6 +3,9 @@ import React from 'react';
 import classes from './Burger.css';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
+//this gives you access to match and other url paramaters in props.
+import { withRouter } from 'react-router-dom';
+
 const burger = (props) => {
   let transformedIngredients = Object.keys(props.ingredients)
     .map(igKey => {
@@ -25,4 +28,4 @@ const burger = (props) => {
   );
 }
 
-export default burger;
+export default withRouter(burger);
