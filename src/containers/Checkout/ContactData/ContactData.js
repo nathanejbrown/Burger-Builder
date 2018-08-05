@@ -69,9 +69,14 @@ class ContactData extends Component {
       this.setState({ loading: true });
       //alert('You continue!');
       //.json in the post is specific to Firebase.
+      const formData = {};
+      for (let formElementIdentifier in this.state.orderForm) {
+        formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value;
+      }
       const order = {
         ingredients: this.props.ingredients,
         price: this.props.price.toFixed(2),
+        orderData: formData
       }
 
       axios.post('/orders.json', order)
@@ -85,6 +90,19 @@ class ContactData extends Component {
 
   }
 
+  inputChangedHandler = (event, inputIdentifier) => {
+    const updatedOrderForm = {
+      ...this.state.orderForm
+    }
+    const updatedFormElement = {
+      //this copies the state deeply, getting nested objects.
+      ...updatedOrderForm[inputIdentifier]
+    }
+    updatedFormElement.value = event.target.value;
+    updatedOrderForm[inputIdentifier] = updatedFormElement;
+    this.setState({orderForm: updatedOrderForm});
+  }
+
   render () {
     const formElementsArray = [];
     for (let key in this.state.orderForm) {
@@ -94,13 +112,14 @@ class ContactData extends Component {
       })
     }
     let form = (
-      <form>
+      <form onSubmit={this.orderHandler}>
         {formElementsArray.map(formElement => (
           <Input
             key={formElement.id}
             elementType={formElement.config.elementType}
             elementConfig={formElement.config.elementConfig}
-            value={formElement.config.value}/>
+            value={formElement.config.value}
+            changed={(event) => this.inputChangedHandler(event, formElement.id)}/>
         ))}
         <Button btnType="Success" clicked={this.orderHandler}>Order</Button>
       </form>
