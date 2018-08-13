@@ -61,6 +61,12 @@ export const fetchOrdersStart = () => {
   }
 }
 
+export const clearOrders = () => {
+  return {
+    type: actionTypes.CLEAR_ORDERS
+  }
+}
+
 export const fetchOrders = (token) => {
   return dispatch => {
     dispatch(fetchOrdersStart())

@@ -5,8 +5,10 @@ export {
 export {
   purchaseBurger,
   purchaseInit,
-  fetchOrders
+  fetchOrders,
+  clearOrders
   } from './order';
 export {
-  auth
+  auth,
+  logout
 } from './auth';
