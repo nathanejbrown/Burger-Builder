@@ -18,6 +18,4 @@ export const AUTH_FAIL = 'AUTH_FAIL';
 
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';
 
-export const CLEAR_ORDERS = 'CLEAR_ORDERS';
-
 export const SET_AUTH_REDIRECT_PATH = 'SET_AUTH_REDIRECT_PATH';

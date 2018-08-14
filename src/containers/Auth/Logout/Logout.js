@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 class Logout extends Component {
   componentDidMount () {
     this.props.onLogout();
-    this.props.clearOrders();
   }
 
   render () {
@@ -16,8 +15,7 @@ class Logout extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onLogout: () => dispatch(actions.logout()),
-    clearOrders: () => dispatch(actions.clearOrders())
+    onLogout: () => dispatch(actions.logout())
   }
 }
 
