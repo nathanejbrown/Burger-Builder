@@ -7,6 +7,7 @@ import classes from './Auth.css';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import * as actions from '../../store/actions/index';
 import { Redirect } from 'react-router-dom';
+import { updateObject } from '../../shared/utility';
 
 class Auth extends Component {
   state = {
@@ -68,15 +69,15 @@ class Auth extends Component {
   }
 
   inputChangedHandler = (event, controlName) => {
-    const updatedControls = {
-      ...this.state.controls,
-      [controlName]: {
-        ...this.state.controls[controlName],
+    const updatedControls = updateObject (this.state.controls, {
+      [controlName]: updateObject(...this.state.controls[controlName], {
         value: event.target.value,
         valid: this.checkValidity(event.target.value, this.state.controls[controlName].validation),
-        touched: true
-      }
-    }
+        touched: true,
+        validation: this.state.controls[controlName].validation,
+        elementConfig: this.state.controls[controlName].elementConfig
+      }) 
+    }) 
     this.setState({controls: updatedControls});
   }
 
@@ -130,8 +131,6 @@ class Auth extends Component {
     if (this.props.isAuthenticated) {
       authRedirect = <Redirect to={this.props.authRedirectPath}/>
     }
-
-    console.log(this.props.isAuthenticated);
 
     return (
       <div className={classes.Auth}>
