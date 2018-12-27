@@ -10,7 +10,6 @@ class Layout extends Component {
   }
 
   sideDrawerToggleHandler = () => {
-    //best way to set state when new state is dependent on old state.
     this.setState((prevState) => {
       return {showSideDrawer: !prevState.showSideDrawer}
     })

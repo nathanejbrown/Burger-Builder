@@ -43,5 +43,4 @@ const mapStateToProps = state => {
   }
 }
 
-// if all you're exporting in connect is mapDispatchToProps, you pass (null, mapDispatchToProps)
 export default connect(mapStateToProps)(Checkout);

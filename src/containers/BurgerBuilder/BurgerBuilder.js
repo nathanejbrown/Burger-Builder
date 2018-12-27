@@ -21,12 +21,10 @@ export class BurgerBuilder extends Component {
   }
 
   updatePurchaseState = (ingredients) => {
-    // Object.keys creates an array of the keys of the given object.
     const sum = Object.keys(ingredients)
       .map(igKey => {
         return ingredients[igKey]
       })
-      // in reduce, 0 is the starting amount.
       .reduce((sum, el) => {
         return sum + el;
       }, 0);

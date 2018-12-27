@@ -3,7 +3,6 @@ import React from 'react';
 import classes from './Burger.css';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
-//this gives you access to match and other url paramaters in props.
 import { withRouter } from 'react-router-dom';
 
 const burger = (props) => {

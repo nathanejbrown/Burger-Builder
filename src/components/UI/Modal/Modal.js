@@ -4,7 +4,6 @@ import classes from './Modal.css';
 import Backdrop from '../Backdrop/Backdrop';
 
 class Modal extends Component {
-  //This component could be functional.
 
   //This stops OrderSummary, which is a child of Modal, from updating uneccessarily. It only updates when the 'show' prop changes.
   shouldComponentUpdate(nextProps, nextState) {
